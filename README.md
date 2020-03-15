@@ -37,5 +37,6 @@ Starts with a model pretrained on COCO dataset.
 ```sh
 (.env)$ custom.py train --dataset=/path/to/datasetfolder --weights=coco
 ```
+It will create weights in **log** folder.
 
 
