@@ -12,6 +12,7 @@ import sys
 import random
 import itertools
 import colorsys
+import cv2
 
 import numpy as np
 from skimage.measure import find_contours
@@ -79,6 +80,22 @@ def apply_mask(image, mask, color, alpha=0.5):
                                   image[:, :, c])
     return image
 
+def fig2numpy(fig):  
+    '''
+    converting matplotlib.puplot figure to numpy array
+    '''
+
+    fig.tight_layout(pad=0)
+    fig.canvas.draw()
+    fig.axes[0].axis('off')
+    img = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8,
+                sep='')
+    img  = img.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+
+        # img is rgb, convert to opencv's default bgr
+    img = cv2.cvtColor(img,cv2.COLOR_RGB2BGR)
+    return img
+
 
 def display_instances(image, boxes, masks, class_ids, class_names,
                       scores=None, title="",
@@ -107,7 +124,7 @@ def display_instances(image, boxes, masks, class_ids, class_names,
     # If no axis is passed, create one and automatically call show()
     auto_show = False
     if not ax:
-        _, ax = plt.subplots(1, figsize=figsize)
+        fig, ax = plt.subplots(1, figsize=figsize)
         auto_show = True
 
     # Generate random colors
@@ -174,8 +191,9 @@ def display_instances(image, boxes, masks, class_ids, class_names,
                 p = Polygon(verts, facecolor="none", edgecolor=color)
                 ax.add_patch(p)
     ax.imshow(masked_image.astype(np.uint8))
-    if auto_show:
-        plt.show()
+    return fig2numpy(fig)
+    #if auto_show:
+    #    plt.show()
 
 
 def display_differences(image,
