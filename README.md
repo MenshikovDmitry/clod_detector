@@ -22,6 +22,7 @@ $wget https://s3-ap-southeast-2.amazonaws.com/menshikov.info/mask_rcnn_komok.h5
 ```bash
 (.env)$ python komok_detector.py --weights=mask_rcnn_komok.h5 <image or video file>
 ```
+press ESC to exit the demo
 
 
 ### Creating dataset from video file
