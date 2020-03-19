@@ -3,6 +3,7 @@
 
 
 ![demo gif](demo.gif?raw=true "Pic")
+[Original video](https://drive.google.com/file/d/1yEiiakDfC5v6omWZgEPXK8ji182_KfGC/view?usp=sharing)
 
 ### Installation:
 Clone, create virtual environment and install dependencies:
