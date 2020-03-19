@@ -81,13 +81,18 @@ if __name__=="__main__":
     parser.add_argument("input",
                         metavar="image.jpeg",
                         help="input file for detection. Image or video")
+    parser.add_argument("--output",
+                        metavar="/path/to/output",
+                        help="folder for saving the output images")
     args = parser.parse_args()
 
     weights= args.weights
     filename=args.input
+    output=args.output
 
     print("Weights: ",weights)
     print("input file: ",filename)
+    print("output to: ",output)
 
     cv2.namedWindow("main", cv2.WINDOW_NORMAL)
     cv2.resizeWindow('main', 800,800)
@@ -116,11 +121,16 @@ if __name__=="__main__":
             print ("could not open :",filename)
             exit()
         ret=True
+        i=0
         while ret:
+            i+=1
             ret,frame=cap.read()
             if ret:
                 img=detector.detect(frame)
                 cv2.imshow('main', img)
+                if output:
+                    out_filename=os.path.basename(filename).replace('.','_')+'_'+str(i)+'.jpg'
+                    cv2.imwrite(os.path.join(output,out_filename),img)
                 
                 if cv2.waitKey(1) == 27:
                     break
