@@ -44,4 +44,9 @@ Starts with a model pretrained on COCO dataset.
 ```
 It will create weights in **log** folder.
 
+## References
+[Original Mask R-CNN Repository](https://github.com/matterport/Mask_RCNN)
+[Splash of Color](https://engineering.matterport.com/splash-of-color-instance-segmentation-with-mask-r-cnn-and-tensorflow-7c761e238b46)
+[Car Damage Detection](https://www.analyticsvidhya.com/blog/2018/07/building-mask-r-cnn-model-detecting-damage-cars-python/)
+
 
