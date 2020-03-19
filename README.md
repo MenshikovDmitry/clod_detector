@@ -1,6 +1,9 @@
 # Clod Detector
 **!!! This repository has not been tested in Windows environment !!!**
 
+
+![demo gif](demo.gif?raw=true "Pic")
+
 ### Installation:
 Clone, create virtual environment and install dependencies:
 ```sh
